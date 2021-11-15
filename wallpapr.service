@@ -1,0 +1,9 @@
+[Unit]
+Description=wallpapr Daemon
+
+[Service]
+Type=simple
+ExecStart=/bin/bash -c "~/.local/bin/wallpapr"
+
+[Install]
+WantedBy=default.target

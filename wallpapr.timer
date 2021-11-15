@@ -1,0 +1,11 @@
+[Unit]
+Description=Schedule wallpapr every 1 hour
+RefuseManualStart=no
+RefuseManualStop=no
+
+[Timer]
+OnCalendar=*-*-* *:00:00
+Unit=wallpapr.service
+
+[Install]
+WantedBy=timers.target
