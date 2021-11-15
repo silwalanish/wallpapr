@@ -1,5 +1,6 @@
 import os
 import requests
+from typing import Any, Dict
 
 from wallpapr.config import Config
 
@@ -12,13 +13,8 @@ def ensure_download_dir(config: Config):
     return download_path
 
 
-def download_image(config: Config, url: str, file_path: str):
-    print("Downloading image...")
+def download_image(url: str, file_path: str, params: Dict[str, Any]):
     try:
-        params = {
-            "w": config.width,
-            "h": config.height,
-        }
 
         image_data = requests.get(url, params=params, stream=True)
 

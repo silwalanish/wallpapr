@@ -2,7 +2,7 @@ import os
 import argparse
 
 from wallpapr.config import Config
-from wallpapr.utils.download import download_image, ensure_download_dir
+from wallpapr.utils.download import ensure_download_dir
 from wallpapr.image_providers import IMAGE_PROVIDERS, resolve_image_provider
 from wallpapr.utils.bg import (
     get_current_background_path,
@@ -59,15 +59,15 @@ def main():
 
     download_path = ensure_download_dir(config)
     image_provider = resolve_image_provider(config)
-    image_id, image_url = image_provider.get_random_image()
 
-    if image_id and image_url:
-        new_wallpaper_path = os.path.join(download_path, f"{image_id}.jpg")
+    new_wallpaper_path = image_provider.download_random_image(
+        config.width, config.height, download_path
+    )
 
-        if download_image(config, image_url, new_wallpaper_path):
-            set_background_picture(new_wallpaper_path)
+    if new_wallpaper_path:
+        set_background_picture(new_wallpaper_path)
 
-            clean_old_wallpaper(config)
+        clean_old_wallpaper(config)
 
-            config.current_wallpaper_path = new_wallpaper_path
-            config.save()
+        config.current_wallpaper_path = new_wallpaper_path
+        config.save()
