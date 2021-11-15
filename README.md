@@ -14,3 +14,6 @@ optional arguments:
   -p {unsplash}, --image-provider {unsplash}
                         Set the image provider to use.
 ```
+
+# License
+[MIT](./LICENSE)
