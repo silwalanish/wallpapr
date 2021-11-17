@@ -20,6 +20,8 @@ rm -f -- ~/.config/environment.d/wallpapr.conf
 printf "UNSPLASH_ACCESS_KEY=\"${UNSPLASH_ACCESS_KEY}\"\nUNSPLASH_SECRET_KEY=\"${UNSPLASH_SECRET_KEY}\"\n" >> ~/.config/environment.d/wallpapr.conf
 
 # Install wallpapr service.
+mkdir -p ~/.config/systemd/user/
+
 cp wallpapr.service ~/.config/systemd/user
 systemctl --user start wallpapr.service
 systemctl --user enable wallpapr.service
