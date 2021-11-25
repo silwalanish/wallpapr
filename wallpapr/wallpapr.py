@@ -1,4 +1,3 @@
-import os
 import argparse
 
 from wallpapr.config import Config
